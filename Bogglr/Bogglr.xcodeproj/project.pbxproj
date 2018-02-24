@@ -17,6 +17,7 @@
 		923602E42041059300EFE035 /* TrieTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E02041059300EFE035 /* TrieTree.swift */; };
 		923602E52041059300EFE035 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E12041059300EFE035 /* TrieNode.swift */; };
 		923602E62041059300EFE035 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E22041059300EFE035 /* Board.swift */; };
+		923602EA2041127F00EFE035 /* BoggleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E92041127F00EFE035 /* BoggleSolver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		923602E02041059300EFE035 /* TrieTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieTree.swift; sourceTree = "<group>"; };
 		923602E12041059300EFE035 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		923602E22041059300EFE035 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		923602E92041127F00EFE035 /* BoggleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoggleSolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +87,11 @@
 		923602B62040F9DE00EFE035 /* Bogglr */ = {
 			isa = PBXGroup;
 			children = (
-				923602E22041059300EFE035 /* Board.swift */,
-				923602DF2041059300EFE035 /* BoardTile.swift */,
-				923602E12041059300EFE035 /* TrieNode.swift */,
-				923602E02041059300EFE035 /* TrieTree.swift */,
+				923602E82041076D00EFE035 /* Board */,
+				923602E72041076200EFE035 /* Tree */,
 				923602B72040F9DE00EFE035 /* AppDelegate.swift */,
 				923602B92040F9DE00EFE035 /* ViewController.swift */,
+				923602E92041127F00EFE035 /* BoggleSolver.swift */,
 				923602BB2040F9DE00EFE035 /* Main.storyboard */,
 				923602BE2040F9DE00EFE035 /* Assets.xcassets */,
 				923602C02040F9DE00EFE035 /* LaunchScreen.storyboard */,
@@ -106,6 +107,24 @@
 				923602CE2040F9DE00EFE035 /* Info.plist */,
 			);
 			path = BogglrTests;
+			sourceTree = "<group>";
+		};
+		923602E72041076200EFE035 /* Tree */ = {
+			isa = PBXGroup;
+			children = (
+				923602E12041059300EFE035 /* TrieNode.swift */,
+				923602E02041059300EFE035 /* TrieTree.swift */,
+			);
+			path = Tree;
+			sourceTree = "<group>";
+		};
+		923602E82041076D00EFE035 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				923602E22041059300EFE035 /* Board.swift */,
+				923602DF2041059300EFE035 /* BoardTile.swift */,
+			);
+			path = Board;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923602EA2041127F00EFE035 /* BoggleSolver.swift in Sources */,
 				923602E32041059300EFE035 /* BoardTile.swift in Sources */,
 				923602E42041059300EFE035 /* TrieTree.swift in Sources */,
 				923602E62041059300EFE035 /* Board.swift in Sources */,
@@ -369,12 +389,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7A9GP774H;
 				INFOPLIST_FILE = Bogglr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forzapps.Bogglr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -384,12 +406,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7A9GP774H;
 				INFOPLIST_FILE = Bogglr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forzapps.Bogglr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
