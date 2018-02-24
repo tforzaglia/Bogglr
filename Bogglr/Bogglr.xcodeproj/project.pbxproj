@@ -18,6 +18,8 @@
 		923602E52041059300EFE035 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E12041059300EFE035 /* TrieNode.swift */; };
 		923602E62041059300EFE035 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E22041059300EFE035 /* Board.swift */; };
 		923602EA2041127F00EFE035 /* BoggleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923602E92041127F00EFE035 /* BoggleSolver.swift */; };
+		923A8F0F2041D38B0006BFC8 /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = 923A8F0E2041D38B0006BFC8 /* dictionary.txt */; };
+		923A8F112041D4920006BFC8 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A8F102041D4920006BFC8 /* AppEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		923602E12041059300EFE035 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		923602E22041059300EFE035 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		923602E92041127F00EFE035 /* BoggleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoggleSolver.swift; sourceTree = "<group>"; };
+		923A8F0E2041D38B0006BFC8 /* dictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
+		923A8F102041D4920006BFC8 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		923602B62040F9DE00EFE035 /* Bogglr */ = {
 			isa = PBXGroup;
 			children = (
+				923A8F0D2041D26F0006BFC8 /* Initialization */,
 				923602E82041076D00EFE035 /* Board */,
 				923602E72041076200EFE035 /* Tree */,
 				923602B72040F9DE00EFE035 /* AppDelegate.swift */,
@@ -125,6 +130,15 @@
 				923602DF2041059300EFE035 /* BoardTile.swift */,
 			);
 			path = Board;
+			sourceTree = "<group>";
+		};
+		923A8F0D2041D26F0006BFC8 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				923A8F0E2041D38B0006BFC8 /* dictionary.txt */,
+				923A8F102041D4920006BFC8 /* AppEnvironment.swift */,
+			);
+			path = Initialization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +226,7 @@
 			files = (
 				923602C22040F9DE00EFE035 /* LaunchScreen.storyboard in Resources */,
 				923602BF2040F9DE00EFE035 /* Assets.xcassets in Resources */,
+				923A8F0F2041D38B0006BFC8 /* dictionary.txt in Resources */,
 				923602BD2040F9DE00EFE035 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +250,7 @@
 				923602E42041059300EFE035 /* TrieTree.swift in Sources */,
 				923602E62041059300EFE035 /* Board.swift in Sources */,
 				923602E52041059300EFE035 /* TrieNode.swift in Sources */,
+				923A8F112041D4920006BFC8 /* AppEnvironment.swift in Sources */,
 				923602BA2040F9DE00EFE035 /* ViewController.swift in Sources */,
 				923602B82040F9DE00EFE035 /* AppDelegate.swift in Sources */,
 			);

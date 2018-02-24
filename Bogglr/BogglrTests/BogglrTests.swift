@@ -12,7 +12,6 @@ import XCTest
 class BogglrTests: XCTestCase {
     
     func testBoggleSolver() {
-        let dictionary = ["cat", "cast", "the", "tag", "live", "cash", "casa"]
         let letters: [[Character]] = [
             ["c", "i", "z"],
             ["u", "a", "k"],
@@ -23,7 +22,7 @@ class BogglrTests: XCTestCase {
         ]
 
         let tree = TrieTree()
-        for word in dictionary {
+        for word in AppEnvironment.shared.dictionary {
             tree.insert(word: word)
         }
 
