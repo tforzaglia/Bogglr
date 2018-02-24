@@ -83,7 +83,7 @@ final class TrieTree {
         // loop through the set of valid Boggle moves
         for move in validBoggleMoves {
             let newRow = row + move.x
-            let newColumn = row + move.y
+            let newColumn = column + move.y
 
             // check that the next tile:
             //   is valid within the board's range,
@@ -103,7 +103,7 @@ final class TrieTree {
                 }
             }
         }
-v
+
         // set the visited state back to false so that the tile can be reused for subsequent words
         currentTile?.isVisited = false
     }
