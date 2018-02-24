@@ -17,7 +17,7 @@ final class BoggleSolver {
     /// The first `Int` (x) in the tuple represents the vertical change from the current tile in the board
     /// The second `Int` (y) in the tuple represents the horizontal change from the current tile in the board
     /// For example: (0, 1) would represent moving one space to the right from the current tile
-    private let validBoggleMoves:[(x: Int, y: Int)] = [(-1, 0), (-1, -1), (-1 ,1), (0, -1), (0, 1), (1, 0), (1, -1), (1, 1)]
+    private let possibleBoggleMoves: [(x: Int, y: Int)] = [(-1, 0), (-1, -1), (-1 ,1), (0, -1), (0, 1), (1, 0), (1, -1), (1, 1)]
 
     init(board: Board, tree: TrieTree) {
         self.board = board
@@ -60,7 +60,7 @@ final class BoggleSolver {
         currentTile?.isVisited = true
 
         // loop through the set of valid Boggle moves
-        for move in validBoggleMoves {
+        for move in possibleBoggleMoves {
             let newRow = row + move.x
             let newColumn = column + move.y
 
