@@ -29,7 +29,6 @@ final class Board {
         }
     }
 
-
     /// Get the `BoardTitle` object at the provided row and column
     ///
     /// - Parameters:
@@ -42,5 +41,16 @@ final class Board {
             return tile
         }
         return nil
+    }
+
+    /// This function is used to ensure that we don't try to access an index that doesn't exist in our board
+    ///
+    /// - Parameters:
+    ///   - row: The row that we want to access in the board
+    ///   - column: The column that we want to access in the board
+    /// - Returns: True if the desired row and column exists in our board
+    ///            False if the desired row and column are out of bounds
+    func isIndexInRange(row: Int, column: Int) -> Bool {
+        return row >= 0 && column >= 0 && row < numberOfRows && column < numberOfColumns
     }
 }

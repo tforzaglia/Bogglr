@@ -28,6 +28,8 @@ class BogglrTests: XCTestCase {
         }
 
         let board = Board(letters: letters)
-        tree.findValidWords(board: board)
+
+        let solver = BoggleSolver(board: board, tree: tree)
+        solver.findValidWords()
     }
 }
