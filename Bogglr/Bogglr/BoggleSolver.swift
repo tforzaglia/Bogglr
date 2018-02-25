@@ -7,6 +7,11 @@
 //
 
 final class BoggleSolver {
+
+    /// The minimum amount of characters a word can have for it to be considered a valid Boggle answer
+    /// Per Boggle rules https://en.wikipedia.org/wiki/Boggle, length of word should be at least 3 characters
+    private let minWordLength = 3
+
     /// The Boggle `Board`
     private let board: Board
 
@@ -51,7 +56,8 @@ final class BoggleSolver {
     ///   - prefix: The current `String` prefix for the word we're trying to form
     private func searchForWord(root: TrieNode, row: Int, column: Int, prefix: String) {
         // recursive base case - we've reached the final node
-        if root.isLeaf {
+        // if the word is longer than or equal to `minWordLength`, it is valid
+        if root.isLeaf && prefix.count >= minWordLength {
             print(prefix)
         }
 
