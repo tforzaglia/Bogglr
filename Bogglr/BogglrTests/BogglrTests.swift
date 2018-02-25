@@ -12,14 +12,9 @@ import XCTest
 class BogglrTests: XCTestCase {
     
     func testBoggleSolver() {
-        let tree = TrieTree()
-        for word in AppEnvironment.shared.dictionary {
-            tree.insert(word: word)
-        }
-
         let board = Board(letters: AppEnvironment.shared.lettersMatrix)
 
-        let solver = BoggleSolver(board: board, tree: tree)
+        let solver = BoggleSolver(board: board, tree: AppEnvironment.shared.tree)
         solver.findValidWords()
     }
 }
