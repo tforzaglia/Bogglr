@@ -12,23 +12,40 @@ import Foundation
 final class AppEnvironment {
     static var shared: AppEnvironment!
 
+    /// `Array` of `Character` `Array`s that will be used to construct the Boggle board
+    private(set) var lettersMatrix = [[Character]]()
+
     /// `Array` of words that make up our dictionary
     private(set) var dictionary = [String]()
 
     init() {
-        readTextFile(from: "dictionary")
+        // build the dictionary array from the the "dictionary" text file
+        readTextFile(from: "dictionary", parseClosure: { [weak self] data in
+            self?.dictionary = data.components(separatedBy: .newlines)
+        })
+
+        // build the letters matrix array from the the "board" text file
+        readTextFile(from: "board", parseClosure: {  [weak self]  data in
+            // each line in the text file represents a row on the board
+            for rowString in data.components(separatedBy: .newlines) {
+                // store each character of the string as a separate member of the array
+                let rowArray = rowString.flatMap { $0 }
+                self?.lettersMatrix.append(rowArray)
+            }
+        })
     }
 
-    /// Read in a dictionary from a text file stored in the app bundle
+    /// Read from a text file stored in the app bundle
     ///
     /// - Parameters:
     ///   - resource: The name of the text file
     ///   - bundle: The bundle in which the text file lives
-    private func readTextFile(from resource: String, bundle: Bundle = Bundle.main) {
+    ///   - parseClosure: The closure to run on the text file contents
+    private func readTextFile(from resource: String, bundle: Bundle = Bundle.main, parseClosure: (String) -> Void) {
         do {
             if let file =  bundle.path(forResource: resource, ofType: "txt") {
                 let data = try String(contentsOfFile: file, encoding: .utf8)
-                dictionary = data.components(separatedBy: .newlines)
+                parseClosure(data)
             }
         }  catch {
             print(error)

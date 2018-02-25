@@ -12,21 +12,12 @@ import XCTest
 class BogglrTests: XCTestCase {
     
     func testBoggleSolver() {
-        let letters: [[Character]] = [
-            ["c", "i", "z"],
-            ["u", "a", "k"],
-            ["q", "s", "h"],
-            ["d", "t", "r"],
-            ["a", "h", "y"],
-            ["d", "g", "v"]
-        ]
-
         let tree = TrieTree()
         for word in AppEnvironment.shared.dictionary {
             tree.insert(word: word)
         }
 
-        let board = Board(letters: letters)
+        let board = Board(letters: AppEnvironment.shared.lettersMatrix)
 
         let solver = BoggleSolver(board: board, tree: tree)
         solver.findValidWords()
