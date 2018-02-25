@@ -12,22 +12,16 @@ import Foundation
 final class AppEnvironment {
     static var shared: AppEnvironment!
 
-    /// The `TrieTree` data structure that will hold the dictionary values
-    let tree = TrieTree()
-
     /// `Array` of `Character` `Array`s that will be used to construct the Boggle board
     private(set) var lettersMatrix = [[Character]]()
 
     /// `Array` of words that make up our dictionary
-    private var dictionary = [String]()
+    private(set) var dictionary = [String]()
 
     init() {
         // build the dictionary array from the the "dictionary" text file
         readTextFile(from: "dictionary", parseClosure: { [weak self] data in
             self?.dictionary = data.components(separatedBy: .newlines)
-            self?.dictionary.forEach {
-                tree.insert(word: $0)
-            }
         })
 
         // build the letters matrix array from the the "board" text file

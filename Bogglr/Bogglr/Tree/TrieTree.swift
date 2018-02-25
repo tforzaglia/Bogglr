@@ -11,10 +11,16 @@ final class TrieTree {
     /// The root node of the `TrieTree`
     var root = TrieNode()
 
+    init(dictionary: [String]) {
+        dictionary.forEach {
+            insert(word: $0)
+        }
+    }
+
     /// Insert the provided word into the tree, with each character occupying it's own `TrieNode`
     ///
     /// - Parameter word: The word to store in the `TrieTree`
-    func insert(word: String) {
+    private func insert(word: String) {
         var node = root
         for character in word {
             node = node.createChildNode(for: character)
