@@ -15,10 +15,11 @@ class BogglrTests: XCTestCase {
         let tree = TrieTree(dictionary: AppEnvironment.shared.dictionary)
         let board = Board(letters: AppEnvironment.shared.lettersMatrix)
         let solver = BoggleSolver(board: board, tree: tree)
+        let validWords = solver.findValidWords()
 
         print("Here are the valid Boggle words in the board")
         print("********************************************")
-        solver.findValidWords()
+        validWords.forEach { print($0) }
         print("********************************************")
     }
 }
