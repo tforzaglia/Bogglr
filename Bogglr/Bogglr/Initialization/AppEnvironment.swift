@@ -28,9 +28,12 @@ final class AppEnvironment {
         readTextFile(from: "board", parseClosure: {  [weak self]  data in
             // each line in the text file represents a row on the board
             for rowString in data.components(separatedBy: .newlines) {
-                // store each character of the string as a separate member of the array
-                let rowArray = rowString.flatMap { $0 }
-                self?.lettersMatrix.append(rowArray)
+                // don't add blank lines to the array
+                if rowString != "" {
+                    // store each character of the string as a separate member of the array
+                    let rowArray = rowString.flatMap { $0 }
+                    self?.lettersMatrix.append(rowArray)
+                }
             }
         })
     }
