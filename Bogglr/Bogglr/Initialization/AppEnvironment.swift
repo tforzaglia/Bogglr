@@ -28,17 +28,26 @@ final class AppEnvironment {
         readTextFile(from: "board", parseClosure: {  [weak self]  data in
             let letters = CharacterSet.letters
 
+            let rows = data.components(separatedBy: .newlines)
+            let rowLength = rows[0].count
+
             // each line in the text file represents a row on the board
-            for rowString in data.components(separatedBy: .newlines) {
+            for rowString in rows {
                 // don't add blank lines to the array
                 if rowString != "" {
-                    // store each character of the string as a separate member of the array
+
+                    // fail if the board input file contains rows of non equal lengths
+                    if rowString.count != rowLength {
+                        fatalError("All rows in the Boggle board input file must be of equal length")
+                    }
+
                     rowString.unicodeScalars.forEach {
                         // fail if the board input file contains non letter characters
                         if !letters.contains($0) {
                             fatalError("Boggle board input file must contain only letters! Board contained an illegal \($0)")
                         }
                     }
+                    // store each character of the string as a separate member of the array
                     let rowArray = rowString.flatMap { $0 }
                     self?.lettersMatrix.append(rowArray)
                 }
