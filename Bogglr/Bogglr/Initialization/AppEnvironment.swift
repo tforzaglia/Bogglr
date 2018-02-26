@@ -26,11 +26,19 @@ final class AppEnvironment {
 
         // build the letters matrix array from the the "board" text file
         readTextFile(from: "board", parseClosure: {  [weak self]  data in
+            let letters = CharacterSet.letters
+
             // each line in the text file represents a row on the board
             for rowString in data.components(separatedBy: .newlines) {
                 // don't add blank lines to the array
                 if rowString != "" {
                     // store each character of the string as a separate member of the array
+                    rowString.unicodeScalars.forEach {
+                        // fail if the board input file contains non letter characters
+                        if !letters.contains($0) {
+                            fatalError("Boggle board input file must contain only letters! Board contained an illegal \($0)")
+                        }
+                    }
                     let rowArray = rowString.flatMap { $0 }
                     self?.lettersMatrix.append(rowArray)
                 }
