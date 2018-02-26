@@ -3,6 +3,8 @@
 My Swift implementation of a program that will find all the words on a generalized Boggle board.
 http://en.wikipedia.org/wiki/Boggle
 
+The driver program for running the Boggle solver algorithm comes in the form of a unit test in the `BogglrTests` package. Executing the `testBoggleSolver()` test in `BogglrTests.swift` will run through the implementation of the algorithm.
+
 I wanted my solution to be written in Swift and make use of a standard iOS development environment. As a result I have used the latest Xcode version (9.2) and am running my test on the latest iOS simulator version (11.2).
 
 Because the code makes use of the latest iOS dev tools, an Apple Mac computer will be required for testing.
