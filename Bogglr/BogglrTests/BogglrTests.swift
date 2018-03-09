@@ -20,6 +20,7 @@ class BogglrTests: XCTestCase {
         print("Here are the valid Boggle words in the board")
         print("********************************************")
         validWords.forEach { print($0) }
+        print("number of valid words = \(validWords.count)")
         print("********************************************")
     }
 }
