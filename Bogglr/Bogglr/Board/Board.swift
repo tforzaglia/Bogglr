@@ -15,7 +15,7 @@ final class Board {
     let numberOfColumns: Int
 
     /// Array of each tile that makes up the Boggle board
-    private var tiles = [BoardTile]()
+    var tiles = [BoardTile]()
 
     init(letters: [[Character]]) {
         self.numberOfRows = letters.count

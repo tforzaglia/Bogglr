@@ -37,30 +37,24 @@ final class BoggleSolver {
     /// - Returns: An `Array` of all valid words found for the Boggle board
     func findValidWords() -> [String] {
         // loop through each row and column on the board
-        for row in 0...board.numberOfRows - 1 {
-            for column in 0...board.numberOfColumns - 1 {
-
-                // ensure that the tile at the current row and column has an associated letter
-                guard let currentLetter = board.tileAtPosition(row: row, column: column)?.letter else { continue }
-
-                // call the recursive search function on the child node that matches the current tile's letter
-                for child in tree.root.childNodes where child.key == currentLetter {
-                    searchForWord(root: child.value, row: row, column: column, prefix: String(describing: currentLetter))
-                }
+        for tile in board.tiles {
+            // call the recursive search function on the child node that matches the current tile's letter
+            for child in tree.root.childNodes where child.key == tile.letter {
+                searchForWord(root: child.value, tile: tile, prefix: String(describing: tile.letter))
             }
         }
         return validWords
     }
 
     /// Recursive search function that traverses our `TrieTree`
-    /// It prints out words in our dictionary that can be formed on the Boggle board
+    /// It determines words in our dictionary that can be formed on the Boggle board
     ///
     /// - Parameters:
     ///   - root: The `TrieNode` to start our traversal from
     ///   - row: The row of the current tile
     ///   - column: The column of the current tile
     ///   - prefix: The current `String` prefix for the word we're trying to form
-    private func searchForWord(root: TrieNode, row: Int, column: Int, prefix: String) {
+    private func searchForWord(root: TrieNode, tile: BoardTile, prefix: String) {
         // recursive base case - we've reached the final node
         // if the word is longer than or equal to `minWordLength`, it is valid
         if root.isLeaf && prefix.count >= minWordLength {
@@ -68,13 +62,12 @@ final class BoggleSolver {
         }
 
         // set the current tile visited so we don't reuse it (which is against official Boggle rules)
-        let currentTile = board.tileAtPosition(row: row, column: column)
-        currentTile?.isVisited = true
+        tile.isVisited = true
 
         // loop through the set of valid Boggle moves
         for move in possibleBoggleMoves {
-            let newRow = row + move.y
-            let newColumn = column + move.x
+            let newRow = tile.row + move.y
+            let newColumn = tile.column + move.x
 
             // check that the next tile:
             //   is valid within the board's range,
@@ -90,12 +83,12 @@ final class BoggleSolver {
 
                 // keep traversing the branch if there is a child node that contains the next tile's letter
                 for child in root.childNodes where child.key == nextTile.letter {
-                    searchForWord(root: child.value, row: row + move.y, column: column + move.x, prefix: newString)
+                    searchForWord(root: child.value, tile: nextTile, prefix: newString)
                 }
             }
         }
 
         // set the visited state back to false so that the tile can be reused for subsequent words
-        currentTile?.isVisited = false
+        tile.isVisited = false
     }
 }
