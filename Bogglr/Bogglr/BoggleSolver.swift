@@ -19,9 +19,9 @@ final class BoggleSolver {
     private let tree: TrieTree
 
     /// An `Array` of tuples representing valid moves one can make to form a word in Boggle
-    /// The first `Int` (x) in the tuple represents the vertical change from the current tile in the board
-    /// The second `Int` (y) in the tuple represents the horizontal change from the current tile in the board
-    /// For example: (0, 1) would represent moving one space to the right from the current tile
+    /// The first `Int` (x) in the tuple represents the horizontal change from the current tile in the board
+    /// The second `Int` (y) in the tuple represents the vertical change from the current tile in the board
+    /// For example: (1, 0) would represent moving one space to the right from the current tile
     private let possibleBoggleMoves: [(x: Int, y: Int)] = [(-1, 0), (-1, -1), (-1 ,1), (0, -1), (0, 1), (1, 0), (1, -1), (1, 1)]
 
     /// An `Array` of all valid words in the Boggle board
@@ -73,8 +73,8 @@ final class BoggleSolver {
 
         // loop through the set of valid Boggle moves
         for move in possibleBoggleMoves {
-            let newRow = row + move.x
-            let newColumn = column + move.y
+            let newRow = row + move.y
+            let newColumn = column + move.x
 
             // check that the next tile:
             //   is valid within the board's range,
@@ -90,7 +90,7 @@ final class BoggleSolver {
 
                 // keep traversing the branch if there is a child node that contains the next tile's letter
                 for child in root.childNodes where child.key == nextTile.letter {
-                    searchForWord(root: child.value, row: row + move.x, column: column + move.y, prefix: newString)
+                    searchForWord(root: child.value, row: row + move.y, column: column + move.x, prefix: newString)
                 }
             }
         }
