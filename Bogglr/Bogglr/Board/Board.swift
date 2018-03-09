@@ -29,12 +29,12 @@ final class Board {
         }
     }
 
-    /// Get the `BoardTitle` object at the provided row and column
+    /// Get the `BoardTile` object at the provided row and column
     ///
     /// - Parameters:
     ///   - row: the row of the tile we're looking for
     ///   - column: the column of the tile we're looking for
-    /// - Returns: A `BoardTitle` object that has been initialized with the provided row and column
+    /// - Returns: A `BoardTile` object that has been initialized with the provided row and column
     ///            Returns nil if there is no BoardTile present with the provided row and column numbers
     func tileAtPosition(row: Int, column: Int) -> BoardTile? {
         for tile in tiles where tile.row == row && tile.column == column {
