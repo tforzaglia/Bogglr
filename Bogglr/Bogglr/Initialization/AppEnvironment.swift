@@ -48,7 +48,7 @@ final class AppEnvironment {
                         }
                     }
                     // store each character of the string as a separate member of the array
-                    let rowArray = rowString.flatMap { $0 }
+                    let rowArray = rowString.compactMap { $0 }
                     self?.lettersMatrix.append(rowArray)
                 }
             }
