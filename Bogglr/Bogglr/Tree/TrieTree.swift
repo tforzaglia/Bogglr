@@ -9,7 +9,7 @@
 /// The tree data structure in which we store our dictionary values
 final class TrieTree {
     /// The root node of the `TrieTree`
-    var root = TrieNode()
+    let root = TrieNode()
 
     init(dictionary: [String]) {
         dictionary.forEach {

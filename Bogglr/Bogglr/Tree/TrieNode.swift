@@ -9,7 +9,7 @@
 /// Represents a node in our `TrieTree`
 final class TrieNode {
     /// The child nodes of this node
-    var childNodes = [Character: TrieNode]()
+    private(set) var childNodes = [Character: TrieNode]()
 
     /// Whether or not this node is the end of a word
     var isLeaf = false

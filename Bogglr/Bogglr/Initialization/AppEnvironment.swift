@@ -8,9 +8,8 @@
 
 import Foundation
 
-/// Singleton initialized on app launch
+/// Environment property that reads and stores the board and dictionary inputs
 final class AppEnvironment {
-    static var shared: AppEnvironment!
 
     /// `Array` of `Character` `Array`s that will be used to construct the Boggle board
     private(set) var lettersMatrix = [[Character]]()
@@ -25,7 +24,7 @@ final class AppEnvironment {
         })
 
         // build the letters matrix array from the the "board" text file
-        readTextFile(from: "board", parseClosure: {  [weak self]  data in
+        readTextFile(from: "board", parseClosure: { [weak self] data in
             let letters = CharacterSet.letters
 
             let rows = data.components(separatedBy: .newlines)
@@ -34,23 +33,21 @@ final class AppEnvironment {
             // each line in the text file represents a row on the board
             for rowString in rows {
                 // don't add blank lines to the array
-                if rowString != "" {
+                guard !rowString.isEmpty else { continue }
 
-                    // fail if the board input file contains rows of non equal lengths
-                    if rowString.count != rowLength {
-                        fatalError("All rows in the Boggle board input file must be of equal length")
-                    }
-
-                    rowString.unicodeScalars.forEach {
-                        // fail if the board input file contains non letter characters
-                        if !letters.contains($0) {
-                            fatalError("Boggle board input file must contain only letters! Board contained an illegal \($0)")
-                        }
-                    }
-                    // store each character of the string as a separate member of the array
-                    let rowArray = rowString.compactMap { $0 }
-                    self?.lettersMatrix.append(rowArray)
+                // fail if the board input file contains rows of non equal lengths
+                guard rowString.count == rowLength else {
+                    fatalError("All rows in the Boggle board input file must be of equal length")
                 }
+                rowString.unicodeScalars.forEach {
+                    // fail if the board input file contains non letter characters
+                    guard letters.contains($0) else {
+                        fatalError("Boggle board input file must contain only letters! Board contained an illegal \($0)")
+                    }
+                }
+                // store each character of the string as a separate member of the array
+                let rowArray = rowString.compactMap { $0 }
+                self?.lettersMatrix.append(rowArray)
             }
         })
     }

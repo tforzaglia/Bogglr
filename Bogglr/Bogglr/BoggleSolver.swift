@@ -22,7 +22,12 @@ final class BoggleSolver {
     /// The first `Int` (x) in the tuple represents the horizontal change from the current tile in the board
     /// The second `Int` (y) in the tuple represents the vertical change from the current tile in the board
     /// For example: (1, 0) would represent moving one space to the right from the current tile
-    private let possibleBoggleMoves: [(x: Int, y: Int)] = [(-1, 0), (-1, -1), (-1 ,1), (0, -1), (0, 1), (1, 0), (1, -1), (1, 1)]
+    private let possibleBoggleMoves: [(x: Int, y: Int)] =
+        [
+            (-1, 0), (-1, -1), (-1 ,1),
+            (0, -1), (0, 1),
+            (1, 0), (1, -1), (1, 1)
+        ]
 
     /// An `Array` of all valid words in the Boggle board
     private var validWords = [String]()

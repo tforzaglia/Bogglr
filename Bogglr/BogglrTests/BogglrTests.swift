@@ -12,15 +12,16 @@ import XCTest
 class BogglrTests: XCTestCase {
     
     func testBoggleSolver() {
-        let tree = TrieTree(dictionary: AppEnvironment.shared.dictionary)
-        let board = Board(letters: AppEnvironment.shared.lettersMatrix)
+        let env = AppEnvironment()
+        let tree = TrieTree(dictionary: env.dictionary)
+        let board = Board(letters: env.lettersMatrix)
         let solver = BoggleSolver(board: board, tree: tree)
         let validWords = solver.findValidWords()
 
-        print("Here are the valid Boggle words in the board")
-        print("********************************************")
+        print("\nHere are the valid Boggle words in the board")
+        print("********************************************\n")
         validWords.forEach { print($0) }
-        print("number of valid words = \(validWords.count)")
-        print("********************************************")
+        print("\nnumber of valid words = \(validWords.count)")
+        print("********************************************\n")
     }
 }

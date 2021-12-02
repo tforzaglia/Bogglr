@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        // initialize the app environment
-        let environment = AppEnvironment()
-        AppEnvironment.shared = environment
-
         return true
     }
 }
